@@ -6,9 +6,9 @@ struct alumno
 {
     int matricula;
     char nombre[50];
-    char direccion[50];
+    char direccion[50]; //variables a pedir al usuario
     char carrera[50];
-    float promedio;
+    float promedio; 
 };
 
 // Función para limpiar el búfer de entrada (stdin)
@@ -42,7 +42,7 @@ void ingresarDatos(struct alumno *alumno) {
 void guardarDatos(struct alumno *alumno, FILE *archivo)
 {
     {
-    fprintf(archivo, "%d, %s, %s, %s, %.2f\n", alumno->matricula, alumno->nombre, alumno->direccion, alumno->carrera, alumno->promedio);
+    fprintf(archivo, "%d, %s, %s, %s, %.2f\n", alumno->matricula, alumno->nombre, alumno->direccion, alumno->carrera, alumno->promedio); //se crea asi el guardado ya que nos pide que guardemos de manera horizontal 
 }
 }
 
@@ -66,7 +66,7 @@ void mostrarDatos(struct alumno *alumno) {
 int main() {
     int n;
 
-    printf("Ingrese el numero de alumnos: ");
+    printf("Ingrese el numero de alumnos: "); //pedir numero de alumnos que puede ser hasta n
     scanf("%d", &n);
 
     struct alumno *alumnos = (struct alumno *)malloc(n * sizeof(struct alumno));
@@ -80,7 +80,7 @@ int main() {
         ingresarDatos(&alumnos[i]);
     }
     printf("\nMenu:\n");
-    printf("1. Mostrar datos\n");
+    printf("1. Mostrar datos\n"); //mneu para pedir al ususario
     printf("2. Guardar datos en archivo\n");//se agrego la opcio de imprimir los archivos
     printf("0. Salir\n");
     printf("Seleccione una opcion: ");
@@ -96,26 +96,26 @@ int main() {
     }
     else if (opcion == 2)
     {
-        FILE *archivo;
-        archivo = fopen("Infosave.txt", "w");
-        if (archivo == NULL)
+        FILE *archivo; //con esto se crea los archivos 
+        archivo = fopen("Infosave.txt", "w");//se utiliza para escrbir en el archivo creado la opcion w 
+        if (archivo == NULL) //infosave nombre del archivo 
         {
             printf("Error al abrir el archivo.\n");
         }
         else
         {
-            printf("\nImrpiendo dato en ell archivo \n");
-            for (int i = 0; i < n; i++)
-            {
+            printf("\nImrpiendo dato en el archivo \n");
+            for (int i = 0; i < n; i++) 
+            {    
                 guardarDatos(&alumnos[i], archivo);
             }
-            fclose(archivo);
-            printf("Proceso completado.\n");
+            fclose(archivo); //poder cerrar archivo 
+            printf("Datos guardados con exito.\n");
         }
     }
     else
     {
-        printf("Saliendo del programa.\n");
+        printf("Adios\n");
     }
 
     free(alumnos);
