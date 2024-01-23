@@ -95,7 +95,29 @@ int main() {
         }
     }
     else if (opcion == 2)
-    
+    {
+        FILE *archivo;
+        archivo = fopen("Infosave.txt", "w");
+        if (archivo == NULL)
+        {
+            printf("Error al abrir el archivo.\n");
+        }
+        else
+        {
+            printf("\nImrpiendo dato en ell archivo \n");
+            for (int i = 0; i < n; i++)
+            {
+                guardarDatos(&alumnos[i], archivo);
+            }
+            fclose(archivo);
+            printf("Proceso completado.\n");
+        }
+    }
+    else
+    {
+        printf("Saliendo del programa.\n");
+    }
+
     free(alumnos);
     return 0;
 }
