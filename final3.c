@@ -37,6 +37,7 @@ void ingresarDatos(struct alumno *alumno) {
     printf("Ingrese el promedio: ");
     scanf("%f", &alumno->promedio);
 }
+void guardarDatos(struct alumno *alumno, FILE *archivo);
 
 // Función para mostrar los datos de un alumno
 void mostrarDatos(struct alumno *alumno) {
