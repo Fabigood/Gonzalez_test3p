@@ -105,12 +105,14 @@ int main() {
         else
         {
             printf("\nImrpiendo dato en el archivo \n");
+            printf("\nIGuardado en archivo text\n");
             for (int i = 0; i < n; i++) 
             {    
                 guardarDatos(&alumnos[i], archivo);
             }
             fclose(archivo); //poder cerrar archivo 
             printf("Datos guardados con exito.\n");
+            printf("Se guardo en un archivo text o plano\n");
         }
     }
     else
