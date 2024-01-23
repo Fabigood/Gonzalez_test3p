@@ -37,7 +37,16 @@ void ingresarDatos(struct alumno *alumno) {
     printf("Ingrese el promedio: ");
     scanf("%f", &alumno->promedio);
 }
-void guardarDatos(struct alumno *alumno, FILE *archivo);
+//funcion para uaadar los datos 
+
+void guardarDatos(struct alumno *alumno, FILE *archivo)
+{
+    {
+    fprintf(archivo, "%d, %s, %s, %s, %.2f\n", alumno->matricula, alumno->nombre, alumno->direccion, alumno->carrera, alumno->promedio);
+}
+}
+
+
 
 // Función para mostrar los datos de un alumno
 void mostrarDatos(struct alumno *alumno) {
@@ -50,6 +59,9 @@ void mostrarDatos(struct alumno *alumno) {
     puts(alumno->carrera); 
     printf("Promedio: %.2f\n", alumno->promedio);
 }
+
+
+
 
 int main() {
     int n;
@@ -69,20 +81,21 @@ int main() {
     }
     printf("\nMenu:\n");
     printf("1. Mostrar datos\n");
+    printf("2. Guardar datos en archivo\n");//se agrego la opcio de imprimir los archivos
     printf("0. Salir\n");
     printf("Seleccione una opcion: ");
     int opcion;
     scanf("%d", &opcion);
-    if (opcion == 1) {
+    if (opcion == 1)
+    {
         printf("\nDatos ingresados para los alumnos:\n");
-        for (int i = 0; i < n; i++) {
-            printf("\nDatos del alumno %d:\n", i + 1);
+        for (int i = 0; i < n; i++)
+        {
             mostrarDatos(&alumnos[i]);
         }
-    } else {
-        printf("Saliendo del programa.\n");
     }
-
+    else if (opcion == 2)
+    
     free(alumnos);
     return 0;
 }
